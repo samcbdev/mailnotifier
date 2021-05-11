@@ -1,0 +1,6 @@
+May 2021
+
+Features
+* Mail Template generates based on DB Table.
+* Replaceable Content and Subject with {} .
+* Queueable mail

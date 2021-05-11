@@ -1,0 +1,29 @@
+{
+    "name": "samcb/mailnotifier",
+    "description": "Mail generates based on DB templates",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam",
+            "email": "samuelraja95@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Samcb\\MailNotifier\\":"src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Samcb\\MailNotifier\\NotifyMailServiceProvider"
+            ],
+            "aliases": {
+                "Notifymail": "Samcb\\MailNotifier\\Facades\\NotifyMailFacade"
+            }
+        }
+    }
+}
