@@ -5,17 +5,12 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Sam",
+            "name": "Samcb",
             "email": "samuelraja95@gmail.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {},
-    "autoload": {
-        "psr-4": {
-            "Samcb\\MailNotifier\\":"src/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
