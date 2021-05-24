@@ -11,11 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {},
-    "autoload": {
-        "psr-4": {
-            "Samcb\\MailNotifier\\":"src/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
