@@ -11,6 +11,11 @@
     ],
     "minimum-stability": "dev",
     "require": {},
+    "autoload": {
+        "psr-4": {
+            "Xsosys\\MailNotifier\\":"src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
