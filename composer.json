@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Xsosys\\MailNotifier\\":"src/"
+            "Samcb\\MailNotifier\\":"src/"
         }
     },
     "extra": {
