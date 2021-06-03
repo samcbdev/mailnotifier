@@ -10,23 +10,23 @@ use Samcb\MailNotifier\Jobs\NotifyMailJob;
 
 class NotifyMailController extends Controller
 {
-    public function key_modify($id,$replace_array_content,$replace_array_subject){
-    	$mail=DB::table(config('notifymail.table_name'))->where('id',$id)->first();
+    public function key_modify($template_unique_id,$replace_array_content,$replace_array_subject){
+    	$mail=DB::table(config('notifymail.table_name'))->where('template_unique_id',$template_unique_id)->first();
     	$mail_content=$mail->content;
     	$mail_subject=$mail->subject;
 
     	$dynamic_fields_content=[];
     	$dynamic_fields_subject=[];
 
-        if (preg_match_all('/{([^}]*)}/', $mail->content, $matches, PREG_OFFSET_CAPTURE)) {
+        if (preg_match_all('/{{([^}]*)}}/', $mail->content, $matches, PREG_OFFSET_CAPTURE)) {
 		        foreach ($matches[1] as $match) {
-		            $dynamic_fields_content[]= "{". "{$match[0]}" ."}";
+		            $dynamic_fields_content[]= "{{". "{$match[0]}" ."}}";
 		        }
 		}
 
-		if (preg_match_all('/{([^}]*)}/', $mail->subject, $matches, PREG_OFFSET_CAPTURE)) {
+		if (preg_match_all('/{{([^}]*)}}/', $mail->subject, $matches, PREG_OFFSET_CAPTURE)) {
 		        foreach ($matches[1] as $match) {
-		            $dynamic_fields_subject[]= "{". "{$match[0]}" ."}";
+		            $dynamic_fields_subject[]= "{{". "{$match[0]}" ."}}";
 		        }
 		}
 
@@ -80,14 +80,14 @@ class NotifyMailController extends Controller
     	return NotifyMailJob::dispatch($details);
     }
 
-    public function check_fields($id){
-    	$mail=DB::table(config('notifymail.table_name'))->where('id',$id)->first();
+    public function check_fields($template_unique_id){
+    	$mail=DB::table(config('notifymail.table_name'))->where('template_unique_id',$template_unique_id)->first();
     	$retrieve=[];
 
     	$dynamic_fields_content=[];
-    	if (preg_match_all('/{([^}]*)}/', $mail->content, $matches, PREG_OFFSET_CAPTURE)) {
+    	if (preg_match_all('/{{([^}]*)}}/', $mail->content, $matches, PREG_OFFSET_CAPTURE)) {
 		        foreach ($matches[1] as $match) {
-		            $dynamic_fields_content[]= "{". "{$match[0]}" ."}";
+		            $dynamic_fields_content[]= "{{". "{$match[0]}" ."}}";
 		        }
 		}
 
@@ -102,9 +102,9 @@ class NotifyMailController extends Controller
     	}
 
     	$dynamic_fields_subject=[];
-    	if (preg_match_all('/{([^}]*)}/', $mail->subject, $matches, PREG_OFFSET_CAPTURE)) {
+    	if (preg_match_all('/{{([^}]*)}}/', $mail->subject, $matches, PREG_OFFSET_CAPTURE)) {
 		        foreach ($matches[1] as $match) {
-		            $dynamic_fields_subject[]= "{". "{$match[0]}" ."}";
+		            $dynamic_fields_subject[]= "{{". "{$match[0]}" ."}}";
 		        }
 		}
 

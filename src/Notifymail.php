@@ -7,10 +7,10 @@ use Samcb\MailNotifier\Http\Controllers\NotifyMailController;
 
 class Notifymail
 {
-    public function generate_records($id,$replace_array_content,$replace_array_subject=NULL)
+    public function generate_records($template_unique_id,$replace_array_content,$replace_array_subject=NULL)
     {
         $get=new NotifyMailController;
-        $set=$get->key_modify($id,$replace_array_content,$replace_array_subject);
+        $set=$get->key_modify($template_unique_id,$replace_array_content,$replace_array_subject);
         return $set;
     }
 
@@ -21,10 +21,10 @@ class Notifymail
         return $set;
     }
 
-    public function check_dynamic_fields($id)
+    public function check_dynamic_fields($template_unique_id)
     {
         $get=new NotifyMailController;
-        $set=$get->check_fields($id);
+        $set=$get->check_fields($template_unique_id);
         return $set;
     }
 }

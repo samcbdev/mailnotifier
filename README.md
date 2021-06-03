@@ -13,19 +13,19 @@ To publish Config, Migration files run
 
 In Your Controller(Example code)
 
-5. If you want to replaceable words in your template, words must be in curly pharses like ``` {your-key-to-replace} ```.
+5. If you want to replaceable words in your template, words must be in curly pharses like ``` {{your-key-to-replace}} ```.
 
 Syntax to generate replace content:
 
-**``` $details = Notifymail::generate_mail('template_id','content_replace_array','subject_replace_array'); ```**
+**``` $details = Notifymail::generate_mail('template_unique_id','content_replace_array','subject_replace_array'); ```**
 
-**template_id** - It's a primary key of your template table.
+**template_unique_id** - It's a unique key of your template table.
 **content_replace_array** - It's a replace of your content field.
 **subject_replace_array** - It's a replace of your subject field.
 
 6. You can check which fields are be replaceable by following comment.
 
-**``` $chk_field = Notifymail::check_dynamic_fields(your-template-id); ```**
+**``` $chk_field = Notifymail::check_dynamic_fields(your-template-unique-id); ```**
 
 7. Replace array content must be the order of the ```$chk_field```. And also all replaceable words must have alternative values. For example, In ```$chk_field``` have 5 replaceable variable you have to pass 5 alternative or your dynamic value. Otherwise it hits some error.
 

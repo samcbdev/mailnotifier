@@ -15,7 +15,7 @@ class CreateEmailNotificationsTable extends Migration
     {
         Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('template_unique_id',20)->nullable();  
+            $table->string('template_unique_id',20)->unique();  
             $table->string('title')->nullable();  
             $table->string('subject')->nullable();
             $table->longText('content')->nullable();

@@ -4,3 +4,7 @@ Features
 * Mail Template generates based on DB Table.
 * Replaceable Content and Subject with {} .
 * Queueable mail
+
+June 2021
+* Sending mail with ID replaced with Template Unique ID.
+* Replaceable Content and Subject with {{ ... }} .
